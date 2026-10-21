@@ -1,0 +1,21 @@
+
+---
+
+## ৪. `deploy/quotex-bot.service`
+
+```ini
+[Unit]
+Description=Quotex Signal Bot
+After=network.target
+
+[Service]
+User=youruser
+WorkingDirectory=/opt/quotex-bot
+ExecStart=/usr/bin/python3 /opt/quotex-bot/bot.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

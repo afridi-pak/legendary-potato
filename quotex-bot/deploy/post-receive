@@ -1,0 +1,9 @@
+#!/bin/bash
+while read oldrev newrev refname; do
+  branch=$(git rev-parse --abbrev-ref $refname)
+  if [ "$branch" = "main" ]; then
+    GIT_WORK_TREE=/opt/quotex-bot git checkout -f main
+    cd /opt/quotex-bot
+    systemctl restart quotex-bot
+  fi
+done
